@@ -9,15 +9,31 @@ import org.junit.Test;
 
 import edu.ithaca.dragon.datastructures.EmptyContainerException;
 
-public class PriorityQueueTest {
 
-    public PriorityQueue<String> getStringPq(){
-        return null;
-    }
+public class PriorityQueueTest {
     
     @Test
-    public void basicTest(){
-        PriorityQueue<String> q = getStringPq();
+    public void testFastOfferPQ(){
+        //TODO: Your PriorityQueue here
+        PriorityQueue<String> q = null;
+        allPqTests(q);
+    }
+
+    @Test
+    public void testFastPollPQ(){
+        //TODO: Your PriorityQueue here
+        PriorityQueue<String> q = null;
+        allPqTests(q);
+    }
+
+    public void allPqTests(PriorityQueue<String> q){
+        basicTest(q);
+        samePriorityTest(q);
+        smallAndLargePriorityTest(q);
+        testPollOnEmpty(q);
+    }
+
+    public void basicTest(PriorityQueue<String> q){
         assertTrue(q.isEmpty());
         q.offer("Sara", 8);
         assertFalse(q.isEmpty());
@@ -43,9 +59,7 @@ public class PriorityQueueTest {
         assertTrue(q.isEmpty());
     }
     
-    @Test
-    public void samePriorityTest(){
-        PriorityQueue<String> q = getStringPq();
+    public void samePriorityTest(PriorityQueue<String> q){
         assertTrue(q.isEmpty());
         q.offer("Sara", 8);
         q.offer("Janice", 2);
@@ -87,9 +101,7 @@ public class PriorityQueueTest {
         assertTrue(q.isEmpty());
     }
 
-    @Test
-    public void smallAndLargePriorityTest(){
-        PriorityQueue<String> q = getStringPq();
+    public void smallAndLargePriorityTest(PriorityQueue<String> q){
         assertTrue(q.isEmpty());
         q.offer("Sara", Integer.MAX_VALUE-1);
         q.offer("Janice", Integer.MAX_VALUE);
@@ -110,10 +122,7 @@ public class PriorityQueueTest {
         assertEquals("Maria", q.poll());
     }
 
-
-    @Test
-    public void testPollOnEmpty(){
-        PriorityQueue<String> q = getStringPq();
+    public void testPollOnEmpty(PriorityQueue<String> q){
         assertTrue(q.isEmpty());
         assertThrows(EmptyContainerException.class, () -> {
             q.poll();
